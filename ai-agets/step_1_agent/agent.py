@@ -98,10 +98,18 @@ async def call_agent_async(query:str) -> str | None:
                 elif event.actions and event.actions.escalate: # Handle potential errors/escalations
                      final_response_text = f"Agent escalated: {event.error_message or 'No specific message.'}"
                 break
-      #print(final_response_text)
+      print(final_response_text)
       return final_response_text
 
-response = asyncio.run(call_agent_async(query="What is the weather like in London?"))
-# Uncomment the line below to run the agent with a sample query
-print(response) # This will print the response from the agent
+async def run_conversation():
+    await call_agent_async(query="What is the weather like in London?")
+    await call_agent_async(query= "How about Paris?")
+    await call_agent_async(query= "Tell me the weather in New York")
 
+
+
+if __name__ == "__main__":
+    try:
+        asyncio.run(run_conversation())
+    except Exception as e:
+        print(f"Error ocured: {e}")   
