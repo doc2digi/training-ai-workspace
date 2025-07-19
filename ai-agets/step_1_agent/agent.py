@@ -16,6 +16,8 @@ MODEL_GEMINI_2_0_FLASH = "gemini-2.0-flash"
 MODEL_GPT_4O = "openai/gpt-4.1"
 MODEL_CLAUDE_SONNET = "anthropic/claude-sonnet-4-20250514"
 
+# define tool
+
 def get_weather(city: str) -> str:
     """ retrive the current weather report for a given or specified city.
     Args:
